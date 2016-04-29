@@ -20,8 +20,6 @@ function encodeVideo() {
     .output('./output/outputfile.avi')
     .on('end', () => deferred.resolve())
     .on('error', (err) => deferred.reject(err))
-    /*.addInput('./histowick.mp3')
-    .duration(50)*/
     .run();
     return deferred.promise;
 }
