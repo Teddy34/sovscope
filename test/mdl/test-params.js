@@ -32,7 +32,8 @@ test('test constants returns types', (t) => {
         urlPrefix: 'urlPrefix',
         inputFileExtension: 'inputFileExtension',
         dateFormat: 'dateFormat',
-        tmpfilePadding: 'tmpfilePadding'
+        framerate: 3,
+        outputExtension: 'outputExtension'
     };
 
     const params = proxyquire('../../mdl/params', {
@@ -45,8 +46,10 @@ test('test constants returns types', (t) => {
     t.ok(typeof params.urlPrefix === 'string', 'urlPrefix is an string');
     t.ok(typeof params.inputFileExtension === 'string', 'inputFileExtension is an string');
     t.ok(typeof params.dateFormat === 'string', 'dateFormat is an string');
-    t.ok(typeof params.tmpfilePadding === 'number', 'tmpfilePadding is an string');
-    t.ok(Object.keys(params).length === 6, 'params length is ok');
+    t.ok(typeof params.framerate === 'number', 'framerate is an string');
+    t.ok(typeof params.outputExtension === 'string', 'outputExtension is an string');
+    t.ok(typeof params.outputFilename === 'string', 'outputFilename is an string');
+    t.ok(Object.keys(params).length === 8, 'params length is ok');
 
     t.end();
 });

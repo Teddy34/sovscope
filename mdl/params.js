@@ -9,7 +9,9 @@ const params = {
     urlPrefix: userParam.urlPrefix || CONSTANTS.DEFAULT_URL_PREFIX,
     inputFileExtension: userParam.imgExtension || CONSTANTS.DEFAULT_INPUT_FILE_EXTENSION,
     dateFormat: userParam.dateFormat || CONSTANTS.DEFAULT_DATE_FORMAT,
-    tmpfilePadding: userParam.tmpfilePadding || CONSTANTS.DEFAULT_TMP_FILE_PADDING
+    framerate: userParam.framerate || CONSTANTS.DEFAULT_FRAMERATE,
+    outputExtension: userParam.outputExtension || CONSTANTS.DEFAULT_OUTPUT_EXTENSION,
+    outputFilename: userParam.outputFilename || CONSTANTS.DEFAULT_OUTPUT_FILENAME
 };
 
 if (params.endDate.isBefore(params.startDate)) {

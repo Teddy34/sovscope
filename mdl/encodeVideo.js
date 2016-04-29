@@ -15,9 +15,9 @@ function checkOrCreateOutputDirectory() {
 function encodeVideo() {
     let deferred = Promise.defer();
     ffmpeg()
-    .addInput(CONSTANTS.TMP_FOLDER+'/%05d.png')
-    .inputFps(2)
-    .output('./output/outputfile.avi')
+    .addInput(CONSTANTS.TMP_FOLDER+'/%08d.png')
+    .inputFps(params.framerate)
+    .output('./output/' + params.outputFilename + '.' + params.outputExtension)
     .on('end', () => deferred.resolve())
     .on('error', (err) => deferred.reject(err))
     .run();
@@ -27,13 +27,13 @@ function encodeVideo() {
 function *seqFilenameGenerator() {
     var index = 1;
     for (;;) {
-        yield _.padStart(index, params.tmpfilePadding, '0')+'.png';
+        yield _.padStart(index, 8, '0')+'.png';
         index++;
     }
 }
 
 function copyAndRenameList(filenameList) {
-    const newFilenameIterator = new seqFilenameGenerator();
+    const newFilenameIterator = new seqFilenameGenerator(filenameList.length);
     _.forEach(filenameList, (value) => {
         var newFilename = newFilenameIterator.next().value;
         fs.copy(CONSTANTS.CACHE_FOLDER+'/'+value, CONSTANTS.TMP_FOLDER+'/'+newFilename, function (err) {
@@ -57,10 +57,10 @@ function deleteTmp() {
 
 module.exports = function(filenameList) {
     return Promise.resolve()
+    .then(deleteTmp)
     .then(checkOrCreateOutputDirectory)
     .then(() => filenameList)
     .then(copyAndRenameList)
-    .then((sampleSize) => {if (!sampleSize) throw new Error('sov map list empty!!!');})
-    .then(encodeVideo)
-    .then(deleteTmp);
+    .then((sampleSize) => {if (!sampleSize) throw new Error('sov map list empty!!!'); return sampleSize;})
+    .then(encodeVideo);
 };

@@ -11,7 +11,7 @@ function fetchSovMapList(config) {
     let filenameList = [];
 
     for (let nextDate of gen) {
-        const filename = nextDate.format(params.dateFormat) + params.inputFileExtension;
+        const filename = nextDate.format(params.dateFormat) + '.' + params.inputFileExtension;
         // we want to do this synchronously to avoid downloading too much at the same time
         promise = promise
         .then(() => getSovMap(filename))
