@@ -1,11 +1,9 @@
 {
   	"startDate":"20160401",
-    "endDate": "20160429",
     "urlPrefix": "http://go-dl1.eve-files.com/media/corp/verite/",
     "inputFileExtension": "png",
     "dateFormat": "YYYYMMDD",
     "framerate": 7,
-    "resolution": "1920x?",
     "outputExtension":"mp4",  
     "outputFileName":"video"
 }
