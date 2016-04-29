@@ -50,7 +50,7 @@ EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights 
 
 EVE Online/ CCP hf does not endorse, and is not in any way affiliated with this project
 
-All content used to create these video is coming from [Verite Rendition] and they get all credits for it.
+Thanks again to [Verite Rendition].
 
 [ISO 8601]: <http://en.wikipedia.org/wiki/ISO_8601>
 [FFMPEG]: <https://ffmpeg.zeranoe.com/builds/>
