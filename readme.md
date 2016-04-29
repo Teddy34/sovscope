@@ -1,5 +1,5 @@
 # Sovscope
-For years, [Verite Rendition] has been providing sov influence map for Eve-Online to track alliances influences over sov-nullsec area of New Eden.
+For years, [Verite Rendition] has been providing fantastic sov influence maps for [Eve Online] to track alliances influences over sov-nullsec area of New Eden.
 Here's a small tool to make videos out of it!
 ### Install:
 
@@ -23,7 +23,7 @@ All options can be set through the params.json file
     "outputExtension":"mp4",  
     "outputFileName":"video"
 ```
-* startDate and endDate can accept any [ISO 8601] format. (default values: today)
+* startDate and endDate can accept any [ISO 8601] format. (if not provided: today)
 * urlPrefix matches sovmap archive (default: Verite Rendition)
 * inputFileExtension is sovmap files extension
 * dateFormat is sovmap files date format 
@@ -40,7 +40,21 @@ node index.js
 Your video file will hopefuly be created in output folder.
 Downloaded images are stored in your cache folder.
 
+### How to be on the map ?
+
+To try [Eve Online], here's a referral link to [try Eve]
+
+### Disclaimers
+
+EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf.
+
+EVE Online/ CCP hf does not endorse, and is not in any way affiliated with this project
+
+All content used to create these video is coming from [Verite Rendition] and they get all credits for it.
+
 [ISO 8601]: <http://en.wikipedia.org/wiki/ISO_8601>
 [FFMPEG]: <https://ffmpeg.zeranoe.com/builds/>
 [Verite Rendition]: <sov.space>
 [fluent-ffmpeg resolutions format]: <https://github.com/fluent-ffmpeg/node-fluent-ffmpeg#video-frame-size-options>
+[Eve Online]: https://www.eveonline.com/
+[try Eve]: http://secure.eveonline.com/trial/?invc=30c46ce9-891f-44a8-8558-28cc8d204efe&action=buddy
