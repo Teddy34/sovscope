@@ -16,13 +16,13 @@ const CONSTANTS = require('./constants');
     tmpfilePadding: userParam.tmpfilePadding || CONSTANTS.DEFAULT_TMP_FILE_PADDING
 */
 
-const constantsStub = {
+/*const constantsStub = {
     EPOCH: moment('20160101'),
     DEFAULT_URL_PREFIX:'DEFAULT_URL_PREFIX',
     DEFAULT_INPUT_FILE_EXTENSION:'DEFAULT_INPUT_FILE_EXTENSION',
     DEFAULT_DATE_FORMAT:'DEFAULT_DATE_FORMAT',
     DEFAULT_TMP_FILE_PADDING:5
-};
+};*/
 
 test('test constants returns types', (t) => {
 
@@ -40,16 +40,16 @@ test('test constants returns types', (t) => {
         '../../param.json':paramFileStub
     });
 
-    t.ok(typeof params === 'object', 'module is an object');
-    t.ok(typeof params.startDate === 'object', 'startDate is an object');
-    t.ok(typeof params.endDate === 'object', 'endDate is an object');
-    t.ok(typeof params.urlPrefix === 'string', 'urlPrefix is an string');
-    t.ok(typeof params.inputFileExtension === 'string', 'inputFileExtension is an string');
-    t.ok(typeof params.dateFormat === 'string', 'dateFormat is an string');
-    t.ok(typeof params.framerate === 'number', 'framerate is an string');
-    t.ok(typeof params.outputExtension === 'string', 'outputExtension is an string');
-    t.ok(typeof params.outputFilename === 'string', 'outputFilename is an string');
-    t.ok(Object.keys(params).length === 8, 'params length is ok');
+    t.equal(typeof params, 'object', 'module is an object');
+    t.equal(typeof params.startDate, 'object', 'startDate is an object');
+    t.equal(typeof params.endDate, 'object', 'endDate is an object');
+    t.equal(typeof params.urlPrefix, 'string', 'urlPrefix is an string');
+    t.equal(typeof params.inputFileExtension, 'string', 'inputFileExtension is an string');
+    t.equal(typeof params.dateFormat, 'string', 'dateFormat is an string');
+    t.equal(typeof params.framerate, 'number', 'framerate is an string');
+    t.equal(typeof params.outputExtension, 'string', 'outputExtension is an string');
+    t.equal(typeof params.outputFilename, 'string', 'outputFilename is an string');
+    t.equal(Object.keys(params).length, 8, 'params length is ok');
 
     t.end();
 });
