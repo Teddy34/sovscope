@@ -5,8 +5,14 @@ Here's a small tool to make videos out of it!
 
 You should first install [FFMPEG] and check if it's available in the PATH.
 
+Get the source code:
 ```
 git clone https://github.com/Teddy34/sovscope.git
+npm install
+```
+
+It runs on nodejs 4+. Classic install in the project folder
+```
 npm install
 ```
 
