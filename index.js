@@ -8,7 +8,7 @@ Promise.resolve()
 .then(getParams)
 .then(fetchSovMapList)
 .then(encodeVideo)
-.then(() => console.log('job is done'))
+.then(() => console.log('Enjoy your video!'))
 .catch((error) => console.log(error));
 
 //TODO : params : fps; output filename <startdate>_<enddate>; output type; size; etc.. Gestion des params dans un autre module spécialisé

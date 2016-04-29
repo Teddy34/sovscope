@@ -16,6 +16,6 @@ const test = require('tape');
 
 test('test encodeVideo returns type', (t) => {
     const encodeVideo = require('../../mdl/encodeVideo');
-    t.ok(typeof encodeVideo === 'function', 'module export is an function');
+    t.equal(typeof encodeVideo, 'function', 'module export is an function');
     t.end();
 });

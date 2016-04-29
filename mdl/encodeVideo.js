@@ -14,13 +14,18 @@ function checkOrCreateOutputDirectory() {
 
 function encodeVideo() {
     let deferred = Promise.defer();
-    ffmpeg()
+    let video = ffmpeg()
     .addInput(CONSTANTS.TMP_FOLDER+'/%08d.png')
     .inputFps(params.framerate)
     .output('./output/' + params.outputFilename + '.' + params.outputExtension)
     .on('end', () => deferred.resolve())
-    .on('error', (err) => deferred.reject(err))
-    .run();
+    .on('error', (err) => deferred.reject(err));
+
+    if (params.resolution) {
+        video = video.size(params.resolution);
+    }
+
+    video.run();
     return deferred.promise;
 }
 
@@ -49,7 +54,7 @@ function deleteTmp() {
         if (err) {
             deferred.reject(err);
         }
-        console.log('removed tmp file');
+        console.log('cleaning...');
         deferred.resolve();
     });
     return deferred.promise;
@@ -57,10 +62,13 @@ function deleteTmp() {
 
 module.exports = function(filenameList) {
     return Promise.resolve()
-    .then(deleteTmp)
+    .then(() => console.log('gathering sovmaps for encoding'))
     .then(checkOrCreateOutputDirectory)
     .then(() => filenameList)
     .then(copyAndRenameList)
-    .then((sampleSize) => {if (!sampleSize) throw new Error('sov map list empty!!!'); return sampleSize;})
-    .then(encodeVideo);
+    .then((sampleSize) => {if (!sampleSize) throw new Error('no sovmaps for that time period!!!'); return sampleSize;})
+    .then(() => console.log('encoding video...'))
+    .then(encodeVideo)
+    .then(() => console.log('encoding done!'))
+    .then(deleteTmp);
 };

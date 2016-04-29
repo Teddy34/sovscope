@@ -10,6 +10,7 @@ const params = {
     inputFileExtension: userParam.imgExtension || CONSTANTS.DEFAULT_INPUT_FILE_EXTENSION,
     dateFormat: userParam.dateFormat || CONSTANTS.DEFAULT_DATE_FORMAT,
     framerate: userParam.framerate || CONSTANTS.DEFAULT_FRAMERATE,
+    resolution: userParam.resolution || CONSTANTS.DEFAULT_RESOLUTION,
     outputExtension: userParam.outputExtension || CONSTANTS.DEFAULT_OUTPUT_EXTENSION,
     outputFilename: userParam.outputFilename || CONSTANTS.DEFAULT_OUTPUT_FILENAME
 };

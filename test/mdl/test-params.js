@@ -46,10 +46,11 @@ test('test constants returns types', (t) => {
     t.equal(typeof params.urlPrefix, 'string', 'urlPrefix is an string');
     t.equal(typeof params.inputFileExtension, 'string', 'inputFileExtension is an string');
     t.equal(typeof params.dateFormat, 'string', 'dateFormat is an string');
-    t.equal(typeof params.framerate, 'number', 'framerate is an string');
+    t.equal(typeof params.framerate, 'number', 'framerate is an number');
+    t.equal(typeof params.resolution, 'string', 'resolution is an string');
     t.equal(typeof params.outputExtension, 'string', 'outputExtension is an string');
     t.equal(typeof params.outputFilename, 'string', 'outputFilename is an string');
-    t.equal(Object.keys(params).length, 8, 'params length is ok');
+    t.equal(Object.keys(params).length, 9, 'params length is ok');
 
     t.end();
 });

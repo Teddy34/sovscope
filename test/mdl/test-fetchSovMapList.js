@@ -16,6 +16,6 @@ const test = require('tape');
 
 test('test encodeVideo returns type', (t) => {
     const fetchSovMapList = require('../../mdl/fetchSovMapList');
-    t.ok(typeof fetchSovMapList === 'function', 'module export is an function');
+    t.equal(typeof fetchSovMapList,'function', 'module export is an function');
     t.end();
 });

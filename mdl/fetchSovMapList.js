@@ -6,20 +6,22 @@ const CONSTANTS = require('./constants');
 const params = require('./params');
 
 function fetchSovMapList(config) {
+    console.log('updating cache');
     let promise = Promise.resolve();
     let gen = new crawlDate(config.startDate, config.endDate);
-    let filenameList = [];
+    let successfullyFechedFilenameList = [];
 
     for (let nextDate of gen) {
         const filename = nextDate.format(params.dateFormat) + '.' + params.inputFileExtension;
         // we want to do this synchronously to avoid downloading too much at the same time
         promise = promise
         .then(() => getSovMap(filename))
-        .then(() => filenameList.push(filename))
-        .catch((err) => console.log(err));
+        .then(() => successfullyFechedFilenameList.push(filename))
+        .catch(() => true);
     }
-
-    return promise.then(() => filenameList);
+    return promise
+    .then(() => console.log('all available sovmaps fetched!!!'))
+    .then(() => successfullyFechedFilenameList);
 }
 
 function *crawlDate(startDate, endDate) {
@@ -51,11 +53,12 @@ function testFileAlreadyFetched(filename) {
 }
 
 function getSovMap(filename) {
-    console.log('get:',filename);
     return Promise.resolve(filename)
     .then(testFileAlreadyFetched)
     .then(function(bAlreadyPresent) {
-        console.log(filename+(bAlreadyPresent?' already fetched': ' needs to be downloaded'));
+        if (!bAlreadyPresent) {
+            console.log(filename+ ' needs to be downloaded');
+        }
         return bAlreadyPresent? true:download(constructUrl(filename));
     });
 }
@@ -70,7 +73,7 @@ function download(url) {
     .dest(CONSTANTS.CACHE_FOLDER)
     .get(url)
     .run(function(err){
-        console.log(err? err.message: url + ' done');
+        console.log(err? err.message: url + ' fetched');
         deferred[err?'reject':'resolve'](err);
     });
     return deferred.promise;
